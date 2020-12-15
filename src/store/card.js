@@ -29,7 +29,7 @@ const initState = {
 };
 
 //Reducer
-const userReducer = (state = initState, action) => {
+const cardReducer = (state = initState, action) => {
     switch (action.type) {
         case SET_RANDOM_CARD:
             return action.payload;
@@ -38,4 +38,4 @@ const userReducer = (state = initState, action) => {
     }
 };
 
-export default userReducer;
+export default cardReducer;

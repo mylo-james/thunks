@@ -10,11 +10,7 @@ const setRandomCard = (payload) => ({
 //Thunk Action Creators
 export const getRandomCard = () => async (dispatch) => {
     const res = await fetch(
-<<<<<<< Updated upstream
-        `https://deckofcardsapi.com/api/deck/new/draw/?count=1`
-=======
         'https://deckofcardsapi.com/api/deck/new/draw/?count=1'
->>>>>>> Stashed changes
     );
     const { cards } = await res.json();
     dispatch(setRandomCard(cards[0]));

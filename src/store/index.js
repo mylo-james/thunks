@@ -5,11 +5,11 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 //Reducers
-import cards from './cards';
+import card from './card';
 
 //Combines Reducers into one reducer
 const rootReducer = combineReducers({
-    cards,
+    card,
 });
 
 // Allow Redux tools

@@ -8,28 +8,25 @@ const setRandomCard = (payload) => ({
 });
 
 //Thunk Action Creators
-export const getRandomCard = (id) => async (dispatch) => {
+export const getRandomCard = () => async (dispatch) => {
     const res = await fetch(
         `https://deckofcardsapi.com/api/deck/new/draw/?count=1`
     );
     const { cards } = await res.json();
-    console.log(cards);
-    dispatch(setRandomCard(cards));
+    dispatch(setRandomCard(cards[0]));
 };
 
 // Define an intial state
-const initState = [
-    {
-        code: 'AH',
-        image: 'https://deckofcardsapi.com/static/img/AH.png',
-        images: {
-            svg: 'https://deckofcardsapi.com/static/img/AH.svg',
-            png: 'https://deckofcardsapi.com/static/img/AH.png',
-        },
-        value: 'ACE',
-        suit: 'HEARTS',
+const initState = {
+    code: 'AH',
+    image: 'https://deckofcardsapi.com/static/img/AH.png',
+    images: {
+        svg: 'https://deckofcardsapi.com/static/img/AH.svg',
+        png: 'https://deckofcardsapi.com/static/img/AH.png',
     },
-];
+    value: 'ACE',
+    suit: 'HEARTS',
+};
 
 //Reducer
 const userReducer = (state = initState, action) => {

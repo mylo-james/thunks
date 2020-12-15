@@ -1,17 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getRandomCard } from './store/cards';
+import { getRandomCard } from './store/card';
 
 function App() {
-    const cards = useSelector((state) => state.cards);
+    const card = useSelector(({card}) => card);
     const dispatch = useDispatch();
 
     return (
         <div className='main'>
             <h2>Pick a card, any card</h2>
-            {cards.map((card) => (
-                <img alt='random' src={card.image} />
-            ))}
-
+            <img alt='random' src={card.image} />
             <button onClick={() => dispatch(getRandomCard())}>
                 Get Random Card
             </button>

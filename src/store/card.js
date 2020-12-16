@@ -8,8 +8,13 @@ export const setRandomCard = (payload) => ({
 });
 
 //Thunk Action Creators
-/*************  TO DO #4 & #9 ******************/
-export const getRandomCard = () => (dispatch) => {};
+export const getRandomCard = () => async (dispatch) => {
+    const res = await fetch(
+        'https://deckofcardsapi.com/api/deck/new/draw/?count=1'
+    );
+    const { cards } = await res.json();
+    dispatch(setRandomCard(cards[0]));
+};
 
 // Define an initial state
 const initState = {

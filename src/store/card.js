@@ -1,3 +1,5 @@
+import { cards } from '../cards.json';
+const randInt = () => Math.floor(Math.random() * cards.length);
 // Action Type Definitions
 const SET_RANDOM_CARD = 'cards/SET_RANDOM_CARD';
 
@@ -9,13 +11,15 @@ export const setRandomCard = (payload) => ({
 
 //Thunk Creators
 /*************  TO DO #4 & #9 ******************/
-export const getRandomCard = () => (dispatch) => {
+export const getRandomCard = () => async (dispatch) => {
     // Can use params from first and second function
     // First is any params you need when you call the Thunk Creator
     // The second is always dispatch
     // Usually this is async if you want to fetch
     /* A Thunk Creator is a function that returns another function that 
     will eventually/hopefully dispatch an action. */
+    console.log('HELLO FROM THUNK!!!!!!!!!!!');
+    dispatch(setRandomCard(cards[randInt()]));
 };
 
 // Define an initial state

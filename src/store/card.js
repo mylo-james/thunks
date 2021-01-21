@@ -1,5 +1,3 @@
-import { cards } from '../cards.json';
-const randInt = () => Math.floor(Math.random() * cards.length);
 // Action Type Definitions
 const SET_RANDOM_CARD = 'cards/SET_RANDOM_CARD';
 
@@ -18,8 +16,11 @@ export const getRandomCard = () => async (dispatch) => {
     // Usually this is async if you want to fetch
     /* A Thunk Creator is a function that returns another function that 
     will eventually/hopefully dispatch an action. */
-    console.log('HELLO FROM THUNK!!!!!!!!!!!');
-    dispatch(setRandomCard(cards[randInt()]));
+    const res = await fetch(
+        'https://deckofcardsapi.com/api/deck/new/draw/?count=1'
+    );
+    const { cards } = await res.json();
+    dispatch(setRandomCard(cards[0]));
 };
 
 // Define an initial state
